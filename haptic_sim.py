@@ -21,32 +21,32 @@ frame = 0
 
 #Letters
 null = [ [0,0] ]
-a = [ [1,1] ] 
-b = [ [1,1] , [1,2] ]
-c = [ [1,1] , [2,1] ]
-d = [ [1,1] , [2,1] , [2,2] ]
-e = [ [1,1] , [2,2] ]
-f = [ [1,1] , [1,2] , [2,1] ]
-g = [ [1,1] , [1,2] , [2,1] , [2,2] ]
-h = [ [1,1] , [1,2] , [2,2] ]
-i = [ [1,2] , [2,1] ]
-j = [ [1,2] , [2,1] , [2,2] ]
-k = [ [1,1] , [1,3] ]
-l = [ [1,1] , [1,2] , [1,3] ]
-m = [ [1,1] , [1,3] , [2,1] ]
-n = [ [1,1] , [1,3] , [2,1] , [2,2] ]
-o = [ [1,1] , [1,3] , [2,2] ]
-p = [ [1,1] , [1,2] , [1,3] , [2,1] ]
-q = [ [1,1] , [1,2] , [1,3] , [2,1] , [2,2] ]
-r = [ [1,1] , [1,2] , [1,3] , [2,2] ]
-s = [ [1,2] , [1,3] , [2,1] ]
-t = [ [1,2] , [1,3] , [2,1] , [2,2] ]
-u = [ [1,1] , [1,3] , [2,3] ]
-v = [ [1,1] , [1,2] , [1,3] , [2,3] ]
-w = [ [1,2] , [2,1] , [2,2] , [2,3] ]
-x = [ [1,1] , [1,3] , [2,1] , [2,3] ]
-y = [ [1,1] , [1,3] , [2,1] , [2,2] , [2,3] ]
-z = [ [1,1] , [1,3] , [2,2] , [2,3] ]
+a = [ [2,1] ] 
+b = [ [2,1] , [2,2] ]
+c = [ [2,1] , [1,1] ]
+d = [ [2,1] , [1,1] , [1,2] ]
+e = [ [2,1] , [1,2] ]
+f = [ [2,1] , [2,2] , [1,1] ]
+g = [ [2,1] , [2,2] , [1,1] , [1,2] ]
+h = [ [2,1] , [2,2] , [1,2] ]
+i = [ [2,2] , [1,1] ]
+j = [ [2,2] , [1,1] , [1,2] ]
+k = [ [2,1] , [2,3] ]
+l = [ [2,1] , [2,2] , [2,3] ]
+m = [ [2,1] , [2,3] , [1,1] ]
+n = [ [2,1] , [2,3] , [1,1] , [1,2] ]
+o = [ [2,1] , [2,3] , [1,2] ]
+p = [ [2,1] , [2,2] , [2,3] , [1,1] ]
+q = [ [2,1] , [2,2] , [2,3] , [1,1] , [1,2] ]
+r = [ [2,1] , [2,2] , [2,3] , [1,2] ]
+s = [ [2,2] , [2,3] , [1,1] ]
+t = [ [2,2] , [2,3] , [1,1] , [1,2] ]
+u = [ [2,1] , [2,3] , [1,3] ]
+v = [ [2,1] , [2,2] , [2,3] , [1,3] ]
+w = [ [2,2] , [1,1] , [1,2] , [1,3] ]
+x = [ [2,1] , [2,3] , [1,1] , [1,3] ]
+y = [ [2,1] , [2,3] , [1,1] , [1,2] , [1,3] ]
+z = [ [2,1] , [2,3] , [1,2] , [1,3] ]
 
 
 
@@ -59,11 +59,7 @@ def activate(letter):
                 pygame.draw.circle(screen,white,(pos_x * 7 - pos_x * letter[x][0] - pos_x * y, pos_y * letter[x][1]), rad)
                 pygame.display.flip()
         pygame.time.delay(500)
-
-def check_quit():
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            run = False
+    deactivate()
 
 def deactivate():
     for x in range(1,7):
@@ -71,17 +67,77 @@ def deactivate():
             pygame.draw.circle(screen,gray,(pos_x * x, pos_y * y), rad)
             pygame.display.flip()
 
+def check_quit():
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
 
-def main(run):
+def keys(run = True):
+    key = pygame.key.get_pressed()
+    if key[pygame.K_ESCAPE]:
+        run = False
+    if key[pygame.K_a]:
+        letter = activate(a)
+    if key[pygame.K_b]:
+        letter = activate(b)
+    if key[pygame.K_c]:
+        letter = activate(c)
+    if key[pygame.K_d]:
+        activate(d)
+    if key[pygame.K_e]:
+        activate(e)
+    if key[pygame.K_f]:
+        activate(f)
+    if key[pygame.K_g]:
+        activate(g)
+    if key[pygame.K_h]:
+        activate(h)
+    if key[pygame.K_i]:
+        activate(i)
+    if key[pygame.K_j]:
+        activate(j)
+    if key[pygame.K_k]:
+        activate(k)
+    if key[pygame.K_l]:
+        activate(l)
+    if key[pygame.K_m]:
+        activate(m)
+    if key[pygame.K_n]:
+        activate(n)
+    if key[pygame.K_o]:
+        activate(o)
+    if key[pygame.K_p]:
+        activate(p)
+    if key[pygame.K_q]:
+        activate(q)
+    if key[pygame.K_r]:
+        activate(r)
+    if key[pygame.K_s]:
+        activate(s)
+    if key[pygame.K_t]:
+        activate(t)
+    if key[pygame.K_u]:
+        activate(u)
+    if key[pygame.K_v]:
+        activate(v)
+    if key[pygame.K_w]:
+        activate(w)
+    if key[pygame.K_x]:
+        activate(x)
+    if key[pygame.K_y]:
+        activate(y)
+    if key[pygame.K_z]:
+        activate(z)
+    return run
+
+
+def main(run = True):
 
     while run:
         #Set Framerate
         clock = pygame.time.Clock()
         clock.tick(fps)
-
-        #Turn Electrodes OFF
-        deactivate()
-
+        
         #Framerate
         #frame += 1
         #print(frame)
@@ -90,66 +146,12 @@ def main(run):
         check_quit()
 
         #Check Keys
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_ESCAPE]:
-            run = False
-        if keys[pygame.K_a]:
-            letter = activate(a)
-        if keys[pygame.K_b]:
-            letter = activate(b)
-        if keys[pygame.K_c]:
-            letter = activate(c)
-        if keys[pygame.K_d]:
-            activate(d)
-        if keys[pygame.K_e]:
-            activate(e)
-        if keys[pygame.K_f]:
-            activate(f)
-        if keys[pygame.K_g]:
-            activate(g)
-        if keys[pygame.K_h]:
-            activate(h)
-        if keys[pygame.K_i]:
-            activate(i)
-        if keys[pygame.K_j]:
-            activate(j)
-        if keys[pygame.K_k]:
-            activate(k)
-        if keys[pygame.K_l]:
-            activate(l)
-        if keys[pygame.K_m]:
-            activate(m)
-        if keys[pygame.K_n]:
-            activate(n)
-        if keys[pygame.K_o]:
-            activate(o)
-        if keys[pygame.K_p]:
-            activate(p)
-        if keys[pygame.K_q]:
-            activate(q)
-        if keys[pygame.K_r]:
-            activate(r)
-        if keys[pygame.K_s]:
-            activate(s)
-        if keys[pygame.K_t]:
-            activate(t)
-        if keys[pygame.K_u]:
-            activate(u)
-        if keys[pygame.K_v]:
-            activate(v)
-        if keys[pygame.K_w]:
-            activate(w)
-        if keys[pygame.K_x]:
-            activate(x)
-        if keys[pygame.K_y]:
-            activate(y)
-        if keys[pygame.K_z]:
-            activate(z)
+        run = keys()
         
 
 def setup():
     deactivate()
-    main(True)
+    main()
 
 if __name__ == '__main__':
     setup()
