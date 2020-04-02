@@ -39,17 +39,21 @@ def main(run = True):
         
         #Activate Electrodes      
         count = 0  
-        index = 0
+        index = -1
         for i in phrase:
+
+            index += 1
 
             #Check Open or Closed Quotes
             if i == '"':
                 if count == 0:
                     activate(chars['"_open'])
                     count = 1
+                    continue
                 else:
                     activate(chars['"_closed'])
                     count = 0
+                    continue
 
             #Check for Decimal or Period
             if i == '.':
@@ -63,7 +67,7 @@ def main(run = True):
                 activate(chars['number'])
                 activate(chars[i])
 
-            #Check for Capaital
+            #Check for Capital
             if i.isupper():
                 activate(chars['capital'])
                 activate(chars[i.lower()])
@@ -71,7 +75,7 @@ def main(run = True):
             else:
                 activate(chars[i])
 
-            index += 1
+            
 
 
 def setup():
