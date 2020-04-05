@@ -26,6 +26,4 @@ def check_quit():
 
 def get_input():
     phrase = input("Enter a phrase: ")
-    print(phrase)
-
     return phrase
